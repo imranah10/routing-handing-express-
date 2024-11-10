@@ -1,3 +1,5 @@
+// core module 
+const path=require('path')
 // external module 
 const express=require('express')
 // local module 
@@ -14,9 +16,7 @@ app.use((req,res,next)=>{
 app.use(userRouter)
 app.use(hostRouter)
 app.use((req,res,next)=>{
-    res.status(404).send(`<h1>404 page not found</h1>
-        <a href="/">go to home</a>
-        `)
+    res.status(404).sendFile(path.join(__dirname,'views','404.html'))
 
 })
 
